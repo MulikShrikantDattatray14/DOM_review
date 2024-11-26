@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Delegation Example</title>
+  <style>
+    .color-box {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      display: inline-block;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Click on a Color Box:</h2>
+  <div id="color-container">
+    <div class="color-box" style="background-color: red;" data-color="Red"></div>
+    <div class="color-box" style="background-color: green;" data-color="Green"></div>
+    <div class="color-box" style="background-color: blue;" data-color="Blue"></div>
+    <div class="color-box" style="background-color: yellow;" data-color="Yellow"></div>
+  </div>
+
+  <p id="color-info"></p>
+
+  <script>
+    // Event delegation: Listening on the parent container
+    document.getElementById('color-container').addEventListener('click', function(event) {
+      // Check if the clicked element is a color-box
+      if (event.target && event.target.classList.contains('color-box')) {
+        const colorName = event.target.getAttribute('data-color');
+        document.getElementById('color-info').textContent = 'You selected ' + colorName + '!';
+      }
+    });
+  </script>
+
+</body>
+</html>

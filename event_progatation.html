@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Propagation Example</title>
+    <style>
+      /* Styling the divs with different colors and sizes */
+      #outerDiv {
+        width: 300px;
+        height: 300px;
+        background-color: lightblue;
+      }
+
+      #middleDiv {
+        width: 80%;
+        height: 80%;
+        background-color: lightgreen;
+        margin-top: 10%;
+      }
+
+      #innerDiv {
+        width: 60%;
+        height: 60%;
+        background-color: lightcoral;
+        margin-top: 20%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nested Divs -->
+    <div id="outerDiv">
+      Outer Div
+      <div id="middleDiv">
+        Middle Div
+        <div id="innerDiv">Inner Div</div>
+      </div>
+    </div>
+
+    <script>
+      /*
+Event propagation is the process by which an event travels through the DOM, either from the target element upwards (bubbling) or from the root downwards (capturing).
+
+      Event propagation is important because it lets you control how events flow through nested elements, preventing unwanted behavior.
+
+
+Capturing is when the event starts at the top of the DOM tree and travels downward.
+Bubbling is when the event starts at the target element and travels back up to the root.
+
+
+
+Default phase: Bubbling (event starts from the target element and bubbles up).
+Capturing phase: Can be enabled explicitly by passing true as the third argument in addEventListener
+*/
+      // Event listener for the outer div
+      document.getElementById("outerDiv").addEventListener(
+        "click",
+        function (event) {
+          console.log("Outer Div clicked");
+        },
+        false
+      );
+
+      // Event listener for the middle div
+      document.getElementById("middleDiv").addEventListener(
+        "click",
+        function (event) {
+          console.log("Middle Div clicked");
+        },
+        false
+      );
+
+      // Event listener for the inner div
+      document.getElementById("innerDiv").addEventListener(
+        "click",
+        function (event) {
+          console.log("Inner Div clicked");
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
